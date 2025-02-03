@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid">
+    <h2 class="text-center">📦 Inventory Management</h2>
+    <p class="text-center">Track available stock and supplies.</p>
+
+    {% if session['user_email'] == 'admin@admin.com' %}
+        <form method="POST" action="/inventory_management" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="item_name" class="form-label">Item Name</label>
+                <input type="text" class="form-control" id="item_name" name="item_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="buy_price" class="form-label">Buy Price (per unit)</label>
+                <input type="number" class="form-control" id="buy_price" name="buy_price" required>
+            </div>
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" required>
+            </div>
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category" required>
+            </div>
+            <div class="mb-3">
+                <label for="sell_price" class="form-label">Sell Price</label>
+                <input type="number" class="form-control" id="sell_price" name="sell_price" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Item Image</label>
+                <input type="file" class="form-control" id="image" name="image" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Item</button>
+        </form>
+    {% endif %}
+
+    <hr>
+
+    <form method="POST" action="{{ url_for('main.add_to_cart') }}">
+        <table class="table table-striped mt-4">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity Available</th>
+                    <th>Category</th>
+                    <th>Sell Price</th>
+                    <th>Total Cost</th>
+                    <th>Image</th>
+                    <th>Add to Cart</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventory %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.sell_price }}</td>
+                    <td>{{ item.total_cost }}</td>
+                    <td>
+                        {% if item.image_url %}
+                            <a href="{{ item.image_url }}" target="_blank">
+                                <img src="{{ item.image_url }}" alt="Item Image" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
+                            </a>
+                        {% else %}
+                            No image
+                        {% endif %}
+                    </td>
+                    <td>
+                        <input type="checkbox" name="item_{{ item._id }}" value="true">
+                    </td>
+                    <td>
+                        <input type="number" name="quantity_{{ item._id }}" value="1" min="1" max="{{ item.quantity }}">
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <button type="submit" class="btn btn-success">Add Selected Items to Cart</button>
+    </form>
+    
+    <a href="{{ url_for('main.view_cart') }}" class="btn btn-warning">View Cart</a>
+</div>
+{% endblock %}

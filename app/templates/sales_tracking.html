@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Sales Tracking</h2>
+<p>Monitor sales transactions.</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity Sold</th>
+            <th>Sale Date</th>
+            <th>Customer</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in sales_tracking %}
+        <tr>
+            <td>{{ sale.product }}</td>
+            <td>{{ sale.quantity }}</td>
+            <td>{{ sale.sale_date }}</td>
+            <td>{{ sale.customer }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

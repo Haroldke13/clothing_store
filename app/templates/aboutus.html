@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>About Us</h2>
+<p>Welcome to our clothing brand, a leader in the fashion industry, committed to providing high-quality, stylish, and comfortable clothing for all. With multiple stores and an expanding customer base, we take pride in delivering the best shopping experience, whether online or in-store.</p>
+
+<!-- Mission, Vision, and Motto Section -->
+<div class="about-us-info">
+    <h3>Our Mission</h3>
+    <p>At our company, our mission is to redefine fashion by blending creativity, quality, and affordability. We aim to empower individuals with clothing that enhances confidence, comfort, and personal expression. Every piece we create is designed with precision, keeping in mind the latest trends and sustainability.</p>
+
+    <h3>Our Vision</h3>
+    <p>Our vision is to be the most trusted and preferred clothing brand in the region, known for innovation, excellence, and commitment to environmental sustainability. We aspire to set new benchmarks in fashion by ensuring our products reflect elegance, durability, and ethical sourcing.</p>
+
+    <h3>Our Motto</h3>
+    <p>"Fashion that speaks to you, style that sets you apart." We believe that what you wear should be an extension of your personality and a statement of individuality.</p>
+</div>
+
+<!-- Our Story -->
+<h3>Our Story</h3>
+<p>From a small boutique to a household name, our journey has been one of passion, dedication, and innovation. Founded with the goal of making fashion accessible to all, we have expanded into multiple stores, offering a diverse range of apparel to suit every style and occasion. Our team consists of talented designers and skilled artisans who ensure every piece is crafted to perfection.</p>
+
+<!-- Sustainability Commitment -->
+<h3>Our Commitment to Sustainability</h3>
+<p>We are deeply committed to ethical fashion and sustainability. Our products are made from eco-friendly materials, and we work closely with suppliers who share our values of fair trade and responsible sourcing. By adopting environmentally conscious production methods, we strive to reduce our carbon footprint and promote a greener planet.</p>
+
+<!-- Customer Satisfaction -->
+<h3>Customer Satisfaction</h3>
+<p>Customer satisfaction is at the heart of everything we do. Our friendly and knowledgeable staff are always ready to assist, whether you need fashion advice or help finding the perfect outfit. We believe in building long-term relationships with our customers by providing excellent service and premium-quality products.</p>
+
+<!-- Store Location Map -->
+<h3>Visit Our Store</h3>
+<p>We welcome you to visit our store and experience our unique collection in person. Check out our location below:</p>
+<div id="map" style="height: 400px; width: 100%;"></div>
+
+<script>
+    function initMap() {
+        // Coordinates for the shop location (update with your shop's location)
+        var location = { lat: -1.286389, lng: 36.817223 }; // Example: Nairobi, Kenya
+        var map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: location
+        });
+
+        var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "Our Shop Location"
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+            content: "<p>Visit our clothing store and explore our latest collections!</p>"
+        });
+        marker.addListener("click", function() {
+            infowindow.open(map, marker);
+        });
+    }
+</script>
+
+<!-- Include the Google Maps API script, replace YOUR_GOOGLE_API_KEY with your actual API key -->
+<script async defer 
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_API_KEY&callback=initMap">
+</script>
+
+{% endblock %}

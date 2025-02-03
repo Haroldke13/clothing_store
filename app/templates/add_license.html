@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add New License</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label for="type" class="form-label">License Type</label>
+        <input type="text" class="form-control" id="type" name="type" required>
+    </div>
+    <div class="mb-3">
+        <label for="expiration_date" class="form-label">Expiration Date</label>
+        <input type="date" class="form-control" id="expiration_date" name="expiration_date" required>
+    </div>
+    <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <input type="text" class="form-control" id="status" name="status" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add License</button>
+</form>
+
+{% endblock %}
