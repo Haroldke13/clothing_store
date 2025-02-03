@@ -1,7 +1,9 @@
 from pymongo import MongoClient
 
-# Connect to local MongoDB
-client = MongoClient("mongodb://localhost:27017/")  
+connection_string = "mongodb+srv://test:test@chatroom.5vtda.mongodb.net/"
+
+# Connect to MongoDB
+client = MongoClient(connection_string) 
 db = client["mydatabase"] 
 
 # Define collections
