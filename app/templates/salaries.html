@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Employee Salaries</h2>
+<p>Monitor employee salary payments.</p>
+
+<!-- Form to add new salary data -->
+<form action="{{ url_for('main.salaries') }}" method="POST">
+    <div class="mb-3">
+        <label for="employee_name" class="form-label">Employee Name</label>
+        <input type="text" class="form-control" id="employee_name" name="employee_name" required>
+    </div>
+    <div class="mb-3">
+        <label for="position" class="form-label">Position</label>
+        <input type="text" class="form-control" id="position" name="position" required>
+    </div>
+    <div class="mb-3">
+        <label for="salary" class="form-label">Salary</label>
+        <input type="number" class="form-control" id="salary" name="salary" step="0.01" required>
+    </div>
+    <div class="mb-3">
+        <label for="last_paid" class="form-label">Last Paid</label>
+        <input type="date" class="form-control" id="last_paid" name="last_paid" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Salary</button>
+</form>
+
+<hr>
+
+<!-- Table to display employee salary information -->
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Last Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for salary in salaries %}
+        <tr>
+            <td>{{ salary.employee_name }}</td>
+            <td>{{ salary.position }}</td>
+            <td>{{ salary.salary }}</td>
+            <td>{{ salary.last_paid.strftime('%Y-%m-%d') }}</td> <!-- Format date -->
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
+s

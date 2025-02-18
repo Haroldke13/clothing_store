@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>User Profile</h2>
+<p>Welcome, {{ user }}</p>
+
+<h3>Purchase History</h3>
+{% if purchases %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Purchase Date</th>
+                <th>Supplier</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for purchase in purchases %}
+            <tr>
+                <td>{{ purchase.name }}</td>
+                <td>{{ purchase.quantity }}</td>
+                <td>{{ purchase.purchase_date }}</td>
+                <td>{{ purchase.supplier }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No purchases made yet.</p>
+{% endif %}
+
+<a href="{{ url_for('main.logout') }}" class="btn btn-danger">Logout</a>
+{% endblock %}

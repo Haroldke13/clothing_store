@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Buy Tracking</h2>
+<p>Track purchased materials for the company.</p>
+
+{% if buy_tracking %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Purchase Date</th>
+            <th>Supplier</th>
+            <th>Buyer Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in buy_tracking %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.purchase_date.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>{{ item.supplier }}</td>
+            <td>{{ item.buyer_email }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No purchase records found.</p>
+{% endif %}
+{% endblock %}
