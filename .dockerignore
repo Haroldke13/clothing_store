@@ -1,0 +1,31 @@
+# VCS
+.git
+.gitignore
+.github
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# Secrets — never bake these into an image
+.env
+.env.*
+*.pem
+*.key
+
+# Runtime state (belongs in volumes, not in the image)
+flask_session_data/
+
+# Local noise
+.DS_Store
+*.swp
+.idea/
+.vscode/
+Dockerfile
+.dockerignore
+DEPLOY.md
