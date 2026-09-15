@@ -76,5 +76,15 @@ the two WTForms, and the DB connection string is not configurable without editin
 
 ## Licence
 
-The `LICENSE` file in this repo is **GPL-3.0**, not MIT — an earlier version of this README said MIT.
-Treat `LICENSE` as authoritative, or replace it if MIT was the intent.
+**Proprietary software — all rights reserved.** Copyright © 2026 Joel Harold Onyango.
+
+This repository is not open source. The full terms are in [LICENSE](LICENSE); in
+summary, you may not copy, redistribute, modify, sublicense, publish, re-host or
+commercially exploit this software, in whole or in part, without the prior
+written permission of the copyright holder. Access to this repository does not
+grant any licence beyond reading it.
+
+Previous versions of this repository were published under an open-source licence.
+That change is not retroactive: copies obtained under the earlier licence remain
+governed by its terms. Everything from this commit onward is covered by
+[LICENSE](LICENSE).
